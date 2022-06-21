@@ -1,48 +1,47 @@
-import {
-  SyntheticEvent,
-  useState,
-} from 'react';
+import { SyntheticEvent, useState } from "react";
 
-import ApiCalendar from 'react-google-calendar-api';
+import ApiCalendar from "react-google-calendar-api";
 
 const config = {
-  "clientId": process.env.REACT_APP_CLIENT_ID,
-  "apiKey": process.env.REACT_APP_API_KEY,
-  "scope": "https://www.googleapis.com/auth/calendar",
-  "discoveryDocs": [
-    "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"
-  ]
-}
+  clientId:
+    "244371551602-li9r2utbs6q77291mlpmqf9i1dpdsf45.apps.googleusercontent.com",
+  apiKey: "AIzaSyCfZNI24XK3eYKhk8aFwCaW4fcRsidwkkY",
+  scope: "https://www.googleapis.com/auth/calendar",
+  discoveryDocs: [
+    "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
+  ],
+};
 
-const apiCalendar = new ApiCalendar(config)
+const apiCalendar = new ApiCalendar(config);
 
 const TestDemo = () => {
   const [events, setEvents] = useState([]);
   const handleItemClick = (event: SyntheticEvent<any>, name: string): void => {
-    if (name === 'sign-in') {
-      apiCalendar.handleAuthClick()
-    } else if (name === 'sign-out') {
+    if (name === "sign-in") {
+      apiCalendar.handleAuthClick();
+    } else if (name === "sign-out") {
       apiCalendar.handleSignoutClick();
     }
   };
 
   return (
     <div>
-      <div style={{ padding: '0.5em' }}>
-        <button onClick={(e) => handleItemClick(e, 'sign-in')}>sign-in</button>
-        <button onClick={(e) => handleItemClick(e, 'sign-out')}>
+      <div style={{ padding: "0.5em" }}>
+        <button onClick={(e) => handleItemClick(e, "sign-in")}>sign-in</button>
+        <button onClick={(e) => handleItemClick(e, "sign-out")}>
           sign-out
         </button>
       </div>
-      <div style={{ padding: '0.5em' }}>
+      <div style={{ padding: "0.5em" }}>
         <button
           onClick={(e) => {
             const eventFromNow: object = {
-              summary: 'Poc Dev From Now',
+              summary: "Poc Dev From Now",
               time: 480,
             };
 
-            apiCalendar.createEventFromNow(eventFromNow)
+            apiCalendar
+              .createEventFromNow(eventFromNow)
               .then((result: object) => {
                 console.log(result);
               })
@@ -54,7 +53,7 @@ const TestDemo = () => {
           Create Event from now
         </button>
       </div>
-      <div style={{ padding: '0.5em' }}>
+      <div style={{ padding: "0.5em" }}>
         <button
           onClick={(e) => {
             apiCalendar.listUpcomingEvents(10).then(({ result }: any) => {
@@ -75,6 +74,6 @@ const TestDemo = () => {
       </div>
     </div>
   );
-}
+};
 
-export default TestDemo
+export default TestDemo;
