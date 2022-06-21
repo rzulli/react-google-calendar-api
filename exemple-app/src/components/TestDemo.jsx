@@ -3,9 +3,8 @@ import { SyntheticEvent, useState } from "react";
 import ApiCalendar from "react-google-calendar-api";
 
 const config = {
-  clientId:
-    "244371551602-li9r2utbs6q77291mlpmqf9i1dpdsf45.apps.googleusercontent.com",
-  apiKey: "AIzaSyCfZNI24XK3eYKhk8aFwCaW4fcRsidwkkY",
+  clientId: "",
+  apiKey: "",
   scope: "https://www.googleapis.com/auth/calendar",
   discoveryDocs: [
     "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest",
