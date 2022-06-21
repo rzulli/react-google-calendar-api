@@ -16,6 +16,7 @@ class ApiCalendar {
       this.createEvent = this.createEvent.bind(this);
       this.listUpcomingEvents = this.listUpcomingEvents.bind(this);
       this.listEvents = this.listEvents.bind(this);
+      this.listCalendars = this.listCalendars.bind(this);
       this.createEventFromNow = this.createEventFromNow.bind(this);
       this.onLoad = this.onLoad.bind(this);
       this.setCalendar = this.setCalendar.bind(this);
