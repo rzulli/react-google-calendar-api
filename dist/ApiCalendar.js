@@ -51,6 +51,7 @@ var ApiCalendar = class {
       this.createEvent = this.createEvent.bind(this);
       this.listUpcomingEvents = this.listUpcomingEvents.bind(this);
       this.listEvents = this.listEvents.bind(this);
+      this.listCalendars = this.listCalendars.bind(this);
       this.createEventFromNow = this.createEventFromNow.bind(this);
       this.onLoad = this.onLoad.bind(this);
       this.setCalendar = this.setCalendar.bind(this);
@@ -224,6 +225,21 @@ var ApiCalendar = class {
     } else {
       console.error("Error: gapi is not loaded use onLoad before please.");
       return null;
+    }
+  }
+  listCalendars(maxResults, minAccessRole, pageToken, showDeleted, showHidden, syncToken) {
+    if (gapi) {
+      return gapi.client.calendar.calendarList.list({
+        maxResults,
+        minAccessRole,
+        pageToken,
+        showDeleted,
+        showHidden,
+        syncToken
+      });
+    } else {
+      console.error("Error: this.gapi not loaded");
+      return false;
     }
   }
 };

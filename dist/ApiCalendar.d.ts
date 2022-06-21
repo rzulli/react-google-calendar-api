@@ -79,7 +79,7 @@ declare class ApiCalendar {
     createEvent(event: {
         end: TimeCalendarType;
         start: TimeCalendarType;
-    }, calendarId?: string, sendUpdates?: 'all' | 'externalOnly' | 'none'): any;
+    }, calendarId?: string, sendUpdates?: "all" | "externalOnly" | "none"): any;
     /**
      * Delete an event in the calendar.
      * @param {string} eventId of the event to delete.
@@ -103,6 +103,13 @@ declare class ApiCalendar {
      * @returns {any}
      */
     getEvent(eventId: string, calendarId?: string): any;
+    /**
+     * List all calendars
+     * @param {number} maxResults to see
+     * @param {string} calendarId to see by default use the calendar attribute
+     * @returns {any}
+     */
+    listCalendars(maxResults?: number | undefined, minAccessRole?: gapi.client.calendar.AccessRoleWithoutNone | undefined, pageToken?: string | undefined, showDeleted?: boolean | undefined, showHidden?: boolean | undefined, syncToken?: string | undefined): any;
 }
 
 export { ApiCalendar as default };
