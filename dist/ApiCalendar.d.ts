@@ -15,6 +15,7 @@ declare class ApiCalendar {
     tokenClient: google.accounts.oauth2.TokenClient | null;
     onLoadCallback: any;
     calendar: string;
+    getToken: (() => GoogleApiOAuth2TokenObject) | undefined;
     constructor(config: ConfigApiCalendar);
     get sign(): boolean;
     /**

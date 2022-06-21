@@ -7,6 +7,7 @@ class ApiCalendar {
   tokenClient: google.accounts.oauth2.TokenClient | null = null;
   onLoadCallback: any = null;
   calendar: string = "primary";
+  getToken: (() => GoogleApiOAuth2TokenObject) | undefined;
 
   constructor(public config: ConfigApiCalendar) {
     try {
@@ -23,6 +24,7 @@ class ApiCalendar {
       this.updateEvent = this.updateEvent.bind(this);
       this.deleteEvent = this.deleteEvent.bind(this);
       this.getEvent = this.getEvent.bind(this);
+      this.getToken = gapi.client.getToken.bind(this);
       this.handleClientLoad();
     } catch (e) {
       console.log(e);

@@ -58,6 +58,7 @@ var ApiCalendar = class {
       this.updateEvent = this.updateEvent.bind(this);
       this.deleteEvent = this.deleteEvent.bind(this);
       this.getEvent = this.getEvent.bind(this);
+      this.getToken = gapi.client.getToken.bind(this);
       this.handleClientLoad();
     } catch (e) {
       console.log(e);
