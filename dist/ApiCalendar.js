@@ -58,7 +58,7 @@ var ApiCalendar = class {
       this.updateEvent = this.updateEvent.bind(this);
       this.deleteEvent = this.deleteEvent.bind(this);
       this.getEvent = this.getEvent.bind(this);
-      this.getToken = gapi.client.getToken.bind(this);
+      this.getToken = this.getToken.bind(this);
       this.handleClientLoad();
     } catch (e) {
       console.log(e);
@@ -66,6 +66,12 @@ var ApiCalendar = class {
   }
   get sign() {
     return !!this.tokenClient;
+  }
+  getToken() {
+    if (gapi && this.tokenClient) {
+      return gapi.client.getToken();
+    }
+    return void 0;
   }
   initGapiClient() {
     gapi.client.init({
