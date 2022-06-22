@@ -229,7 +229,8 @@ class ApiCalendar {
   public createEvent(
     event: { end: TimeCalendarType; start: TimeCalendarType },
     calendarId: string = this.calendar,
-    sendUpdates: "all" | "externalOnly" | "none" = "none"
+    sendUpdates: "all" | "externalOnly" | "none" = "none",
+    conferenceDataVersion: number = 0
   ): any {
     if (gapi.client.getToken()) {
       return gapi.client.calendar.events.insert({
@@ -237,6 +238,7 @@ class ApiCalendar {
         resource: event,
         //@ts-ignore the @types/gapi.calendar package is not up to date(https://developers.google.com/calendar/api/v3/reference/events/insert)
         sendUpdates: sendUpdates,
+        conferenceDataVersion: conferenceDataVersion,
       });
     } else {
       console.error("Error: this.gapi not loaded");

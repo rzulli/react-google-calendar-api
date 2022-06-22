@@ -80,7 +80,7 @@ declare class ApiCalendar {
     createEvent(event: {
         end: TimeCalendarType;
         start: TimeCalendarType;
-    }, calendarId?: string, sendUpdates?: "all" | "externalOnly" | "none"): any;
+    }, calendarId?: string, sendUpdates?: "all" | "externalOnly" | "none", conferenceDataVersion?: number): any;
     /**
      * Delete an event in the calendar.
      * @param {string} eventId of the event to delete.

@@ -187,12 +187,13 @@ var ApiCalendar = class {
     };
     return this.createEvent(event, calendarId);
   }
-  createEvent(event, calendarId = this.calendar, sendUpdates = "none") {
+  createEvent(event, calendarId = this.calendar, sendUpdates = "none", conferenceDataVersion = 0) {
     if (gapi.client.getToken()) {
       return gapi.client.calendar.events.insert({
         calendarId,
         resource: event,
-        sendUpdates
+        sendUpdates,
+        conferenceDataVersion
       });
     } else {
       console.error("Error: this.gapi not loaded");
